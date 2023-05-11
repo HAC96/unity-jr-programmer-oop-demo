@@ -34,7 +34,10 @@ public class Player : Creature // INHERITANCE
     {
         RaycastHit2D[] hits = Physics2D.RaycastAll(transform.position, facing, AttackRange + BoxColliderRangeDiff(gameObject), mask);
 //        Debug.DrawRay(transform.position, facing);
-        if (hits.Length == 0) { return; }
+        if (hits.Length == 0) {
+            animator.SetTrigger("Attack_t");
+            return;
+        }
 //        Debug.Log($"Player struck {hits[0].transform.gameObject.name}");
         if (hits[0].transform.gameObject.GetComponent<Monster>() != null)
         {

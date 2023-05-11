@@ -42,6 +42,7 @@ public class Slime : Monster // INHERITANCE
     protected void Split()
     {
         Vector2 translation = facing.y == 0 ? Vector2.up : Vector2.left;
+        animator.SetBool("Dead_b", false);
         Instantiate(gameObject, transform.position + (Vector3)translation, Quaternion.identity);
         transform.Translate(-translation);
     }
