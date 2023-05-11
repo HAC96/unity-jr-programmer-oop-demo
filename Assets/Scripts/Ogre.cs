@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Orc : Monster // INHERITANCE
+public class Ogre : Monster // INHERITANCE
 {
     protected override int MaxHitPoints { get => maxHitPoints; }
     protected override float MoveSpeed { get => moveSpeed; }
