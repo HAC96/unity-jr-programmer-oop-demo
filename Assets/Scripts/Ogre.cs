@@ -21,13 +21,16 @@ public class Ogre : Monster // INHERITANCE
     [SerializeField] float detectionRange = 6;
 
     protected bool isRaging = false;
+    protected SpriteRenderer spriteRenderer { get => GetComponent<SpriteRenderer>(); }
 
-    protected void Update()
+    protected override void Update()
     {
         if (HitPoints < MaxHitPoints / 2)
         {
             isRaging = true;
             Debug.Log($"{gameObject.name} became enraged");
+            spriteRenderer.color = new Color(1, 0.25f, 0.25f);
         }
+        base.Update();
     }
 }
