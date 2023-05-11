@@ -18,6 +18,7 @@ public abstract class Creature : MonoBehaviour
             {
                 hitPoints = 0;
                 animator.SetBool("Dead_b", true);
+                StartCoroutine(WaitOneFrame()); // purely so the death animation has a chance to play before death completes
                 Die();
             }
             else if (value > MaxHitPoints)
@@ -153,5 +154,10 @@ public abstract class Creature : MonoBehaviour
                 rb.velocity -= velInDir;
             }
         }
+    }
+
+    protected IEnumerator WaitOneFrame()
+    {
+        yield return new WaitForEndOfFrame();
     }
 }
