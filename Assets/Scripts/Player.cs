@@ -24,6 +24,8 @@ public class Player : Creature // INHERITANCE
     [SerializeField] Slider hpBar;
     [SerializeField] TextMeshProUGUI hpText;
 
+    [SerializeField] float regenInterval = 6;
+
     public override int HitPoints
     {
         get => base.HitPoints;
@@ -44,6 +46,7 @@ public class Player : Creature // INHERITANCE
         hpBar.maxValue = maxHitPoints;
         base.Start();
         HpBarUpdate(hitPoints);
+        InvokeRepeating(nameof(RegenerateHealth), regenInterval, regenInterval);
     }
 
     protected void HpBarUpdate(int hp)
@@ -76,5 +79,10 @@ public class Player : Creature // INHERITANCE
     protected override void Die()
     {
         GameManager.Instance.GameOver();
+    }
+
+    protected void RegenerateHealth()
+    {
+        if (hitPoints < maxHitPoints) { HitPoints++; }
     }
 }
