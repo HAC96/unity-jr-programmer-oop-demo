@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -19,12 +20,14 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public bool gameOver = false;
+    public int difficulty;
+    public float musicVolume;
+    public float sfxVolume;
+    [SerializeField] int gameOverSceneIndex = 2;
+    public string killedBy;
 
     public void GameOver()
     {
-        gameOver = true;
-        Debug.Log("Game Over!");
-        // TODO: make this load a new scene with a menu
+        SceneManager.LoadScene(gameOverSceneIndex);
     }
 }

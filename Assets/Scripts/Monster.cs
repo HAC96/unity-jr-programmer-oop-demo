@@ -21,7 +21,6 @@ public abstract class Monster : Creature // INHERITANCE
 
     protected virtual void FixedUpdate()
     {
-        if (GameManager.Instance.gameOver) { return; }
         if (player == null) {
             player = FindObjectOfType<Player>();
             Debug.Log("Couldn't find Player reference");
@@ -33,6 +32,7 @@ public abstract class Monster : Creature // INHERITANCE
  //           Debug.Log($"{gameObject.name} is attacking the player");
             FaceCardinalDirection(toPlayer);
             Attack(player);
+            if (player.HitPoints <= 0) { GameManager.Instance.killedBy = gameObject.name; }
         }
         else if (CanSeePlayer())
         {

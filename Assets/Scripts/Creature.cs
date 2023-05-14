@@ -48,6 +48,7 @@ public abstract class Creature : MonoBehaviour
     protected Vector2 facing;
 
     protected Animator animator { get => GetComponent<Animator>(); }
+    protected float difficultyMult { get => 0.5f * Mathf.Pow(2, GameManager.Instance.difficulty); }
 
     protected virtual void Start()
     {
@@ -61,12 +62,6 @@ public abstract class Creature : MonoBehaviour
 
     protected void Move(Vector2 direction)
     {
-        if (GameManager.Instance.gameOver)
-        {
-            rb.velocity = Vector2.zero;
-            rb.Sleep();
-            return;
-        }
         rb.velocity = direction * MoveSpeed;
         // ABSTRACTION
         FaceCardinalDirection(direction);

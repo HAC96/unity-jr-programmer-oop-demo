@@ -8,8 +8,8 @@ public class Slime : Monster // INHERITANCE
     protected override float MoveSpeed { get => moveSpeed; }
     protected override float AttackRange { get => attackRange; }
     protected override float AttackCooldown { get => attackCooldown; }
-    protected override float MinDamage { get => hasSplit ? minDamage / 2 : minDamage; }
-    protected override float MaxDamage { get => hasSplit ? maxDamage / 2 : maxDamage; }
+    protected override float MinDamage { get => (hasSplit ? minDamage / 2 : minDamage) * difficultyMult; }
+    protected override float MaxDamage { get => (hasSplit ? maxDamage / 2 : maxDamage) * difficultyMult; }
     protected override float DetectionRange { get => detectionRange; }
 
     [SerializeField] int maxHitPoints = 30;

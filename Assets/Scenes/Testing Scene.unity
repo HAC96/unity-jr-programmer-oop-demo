@@ -234,7 +234,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 905148529}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -4133,7 +4133,7 @@ GameObject:
   - component: {fileID: 1477368496}
   - component: {fileID: 1477368495}
   m_Layer: 0
-  m_Name: GameManager
+  m_Name: Game Manager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4151,7 +4151,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4242c1b9d78070f4a8a087de20281b3e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameOver: 0
+  difficulty: 0
+  musicVolume: 0
+  sfxVolume: 0
 --- !u!4 &1477368496
 Transform:
   m_ObjectHideFlags: 0
@@ -4230,11 +4232,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 318042678288484294, guid: ee0d588d50ce18f4bb5fd7307e010ba3, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -4.81
+      value: -4.89
       objectReference: {fileID: 0}
     - target: {fileID: 318042678288484294, guid: ee0d588d50ce18f4bb5fd7307e010ba3, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.39
+      value: 0.42
       objectReference: {fileID: 0}
     - target: {fileID: 318042678288484294, guid: ee0d588d50ce18f4bb5fd7307e010ba3, type: 3}
       propertyPath: m_LocalPosition.z

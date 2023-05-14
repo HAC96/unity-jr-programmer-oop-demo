@@ -8,8 +8,8 @@ public class Skeleton : Monster
     protected override float MoveSpeed { get => moveSpeed; }
     protected override float AttackRange { get => attackRange; }
     protected override float AttackCooldown { get => attackCooldown; }
-    protected override float MinDamage { get => minDamage; }
-    protected override float MaxDamage { get => maxDamage; }
+    protected override float MinDamage { get => minDamage * difficultyMult; }
+    protected override float MaxDamage { get => maxDamage * difficultyMult; }
     protected override float DetectionRange { get => detectionRange; }
 
     [SerializeField] int maxHitPoints = 20;
