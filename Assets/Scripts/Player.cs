@@ -1,7 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.UI;
 
 public class Player : Creature // INHERITANCE
 {
@@ -19,9 +21,35 @@ public class Player : Creature // INHERITANCE
     [SerializeField] float minDamage = 3;
     [SerializeField] float maxDamage = 12;
 
+    [SerializeField] Slider hpBar;
+    [SerializeField] TextMeshProUGUI hpText;
+
+    public override int HitPoints
+    {
+        get => base.HitPoints;
+        set
+        {
+            HpBarUpdate(value);
+            base.HitPoints = value;
+        }
+    }
+
     protected LayerMask mask
     {
         get => LayerMask.GetMask("Monster", "Obstacle", "Flying"); 
+    }
+
+    protected override void Start()
+    {
+        hpBar.maxValue = maxHitPoints;
+        base.Start();
+        HpBarUpdate(hitPoints);
+    }
+
+    protected void HpBarUpdate(int hp)
+    {
+        hpBar.value = hp;
+        hpText.text = $"({hp}/{maxHitPoints})";
     }
 
     protected void OnMove(InputValue input)

@@ -90,7 +90,6 @@ public abstract class Creature : MonoBehaviour
                 break;
         }
 //        Debug.Log($"{gameObject.name} is facing ({facing.x},{facing.y})");
-        // TODO: add some code to make the sprite show the one facing that direction
     }
 
     protected virtual void Attack(Creature target)
@@ -121,7 +120,8 @@ public abstract class Creature : MonoBehaviour
     {
         float damage = Random.Range(MinDamage, MaxDamage);
         target.HitPoints -= Mathf.RoundToInt(damage);
-        Debug.Log($"{gameObject.name} hit {target.gameObject.name} for {damage}");
+//        Debug.Log($"{gameObject.name} hit {target.gameObject.name} for {damage}");
+        GameManager.Instance.AddDamageLog(gameObject.name, target.gameObject.name, damage);
     }
 
     protected IEnumerator AttackCooldownCoroutine()
