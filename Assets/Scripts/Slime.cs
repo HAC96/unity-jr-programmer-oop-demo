@@ -31,7 +31,7 @@ public class Slime : Monster // INHERITANCE
             HitPoints = MaxHitPoints;
             // ABSTRACTION
             Split();
-            Debug.Log($"{gameObject.name} split");
+            GameManager.Instance.AddLogMessage($"{gameObject.name} split");
         }
         else
         {
@@ -43,7 +43,10 @@ public class Slime : Monster // INHERITANCE
     {
         Vector2 translation = facing.y == 0 ? Vector2.up : Vector2.left;
         animator.SetBool("Dead_b", false);
-        Instantiate(gameObject, transform.position + (Vector3)translation, Quaternion.identity);
+        GameObject newSlime = Instantiate(gameObject, transform.position + (Vector3)translation, Quaternion.identity);
+        newSlime.GetComponent<Slime>().hasSplit = true;
         transform.Translate(-translation);
+        gameObject.GetComponent<SpriteRenderer>().size *= 0.75f;
+        newSlime.GetComponent<SpriteRenderer>().size *= 0.75f;
     }
 }

@@ -18,7 +18,6 @@ public abstract class Creature : MonoBehaviour
             {
                 hitPoints = 0;
                 animator.SetBool("Dead_b", true);
-                StartCoroutine(WaitOneFrame()); // purely so the death animation has a chance to play before death completes
                 Die();
             }
             else if (value > MaxHitPoints)
@@ -133,7 +132,7 @@ public abstract class Creature : MonoBehaviour
     protected virtual void Die()
     {
         Destroy(gameObject);
-        Debug.Log($"{gameObject.name} died");
+        GameManager.Instance.AddLogMessage($"{gameObject.name} died");
     }
 
     // some code to fix an issue where without using physics movement creatures walked through walls but with them they push each other around
@@ -149,10 +148,5 @@ public abstract class Creature : MonoBehaviour
                 rb.velocity -= velInDir;
             }
         }
-    }
-
-    protected IEnumerator WaitOneFrame()
-    {
-        yield return new WaitForEndOfFrame();
     }
 }
