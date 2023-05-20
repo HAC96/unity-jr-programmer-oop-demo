@@ -700,6 +700,7 @@ MonoBehaviour:
   killedBy: 
   damageLogList: []
   damageLogDisplay: {fileID: 260372613}
+  winSFX: {fileID: 0}
 --- !u!4 &411093561
 Transform:
   m_ObjectHideFlags: 0

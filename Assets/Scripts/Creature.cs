@@ -48,6 +48,8 @@ public abstract class Creature : MonoBehaviour
 
     protected Animator animator { get => GetComponent<Animator>(); }
     protected float difficultyMult { get => 0.5f * Mathf.Pow(2, GameManager.Instance.difficulty); }
+    protected AudioSource audioSource { get => GetComponent<AudioSource>(); }
+    [SerializeField] protected AudioClip attackSound;
 
     protected virtual void Start()
     {
@@ -57,6 +59,7 @@ public abstract class Creature : MonoBehaviour
     protected virtual void Update()
     {
         animator.SetFloat("Speed_f", rb.velocity.magnitude);
+        audioSource.volume = GameManager.Instance.sfxVolume;
     }
 
     protected void Move(Vector2 direction)
@@ -88,7 +91,6 @@ public abstract class Creature : MonoBehaviour
                 animator.SetInteger("Facing_i", 3);
                 break;
         }
-//        Debug.Log($"{gameObject.name} is facing ({facing.x},{facing.y})");
     }
 
     protected virtual void Attack(Creature target)
@@ -97,6 +99,8 @@ public abstract class Creature : MonoBehaviour
         // ABSTRACTION
         if (target != null && IsInRange(target)) { DamageTarget(target); }
         animator.SetTrigger("Attack_t");
+        audioSource.clip = attackSound;
+        audioSource.Play();
         isAttackCooldown = true;
         StartCoroutine(AttackCooldownCoroutine());
     }
@@ -119,7 +123,6 @@ public abstract class Creature : MonoBehaviour
     {
         float damage = Random.Range(MinDamage, MaxDamage);
         target.HitPoints -= Mathf.RoundToInt(damage);
-//        Debug.Log($"{gameObject.name} hit {target.gameObject.name} for {damage}");
         GameManager.Instance.AddDamageLog(gameObject.name, target.gameObject.name, damage);
     }
 

@@ -16,7 +16,6 @@ public class Chest : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            Debug.Log("Player entered chest trigger");
             animator.SetTrigger("Open_t");
             other.GetComponent<Animator>().SetTrigger("Grab_item_t");
             if (hasMcGuffin)
