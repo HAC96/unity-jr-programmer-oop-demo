@@ -31,6 +31,8 @@ public class GameManager : MonoBehaviour
     public string killedBy;
     public List<string> damageLogList = new List<string>();
     [SerializeField] TextMeshProUGUI damageLogDisplay;
+    private AudioSource miscSoundPlayer { get => GetComponent<AudioSource>(); }
+    [SerializeField] AudioClip winSFX;
 
     private void OnSceneLoad(Scene scene, LoadSceneMode loadSceneMode)
     {
@@ -47,7 +49,7 @@ public class GameManager : MonoBehaviour
 
     public void AddDamageLog(string attacker, string target, float damage)
     {
-        AddLogMessage($"{attacker} hit {target} for {Mathf.RoundToInt(damage)}");
+        AddLogMessage($"{attacker} hit {target} for {Mathf.RoundToInt(damage)} damage");
     }
 
     public void AddLogMessage(string message)
@@ -74,7 +76,8 @@ public class GameManager : MonoBehaviour
 
     public void WinGame()
     {
-        Debug.Log("Win");
+        miscSoundPlayer.clip = winSFX;
+        miscSoundPlayer.Play();
         SceneManager.LoadScene(winSceneIndex);
     }
 }
