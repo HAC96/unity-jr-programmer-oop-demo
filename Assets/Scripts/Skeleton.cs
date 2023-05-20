@@ -28,7 +28,7 @@ public class Skeleton : Monster
         {
             HitPoints = MaxHitPoints / 2;
             resurrectChance /= 2;
-            Debug.Log("Skeleton resurrected");
+            GameManager.Instance.AddLogMessage("Skeleton resurrected");
             animator.SetBool("Dead_b", false);
         }
         else

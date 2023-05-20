@@ -25,12 +25,17 @@ public class Ogre : Monster // INHERITANCE
 
     protected override void Update()
     {
-        if (HitPoints < MaxHitPoints / 2)
+        if (HitPoints < MaxHitPoints / 2 && !isRaging)
         {
-            isRaging = true;
-            Debug.Log($"{gameObject.name} became enraged");
-            spriteRenderer.color = new Color(1, 0.25f, 0.25f);
+            EnterRage(); // ABSTRACTION
         }
         base.Update();
+    }
+
+    void EnterRage()
+    {
+        isRaging = true;
+        GameManager.Instance.AddLogMessage($"{gameObject.name} became enraged");
+        spriteRenderer.color = new Color(1, 0.25f, 0.25f);
     }
 }

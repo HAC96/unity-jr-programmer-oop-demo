@@ -27,6 +27,7 @@ public class GameManager : MonoBehaviour
     public float sfxVolume;
     [SerializeField] int mainSceneIndex = 1;
     [SerializeField] int gameOverSceneIndex = 2;
+    [SerializeField] int winSceneIndex = 3;
     public string killedBy;
     public List<string> damageLogList = new List<string>();
     [SerializeField] TextMeshProUGUI damageLogDisplay;
@@ -46,7 +47,12 @@ public class GameManager : MonoBehaviour
 
     public void AddDamageLog(string attacker, string target, float damage)
     {
-        damageLogList.Add($"{attacker} hit {target} for {Mathf.RoundToInt(damage)}");
+        AddLogMessage($"{attacker} hit {target} for {Mathf.RoundToInt(damage)}");
+    }
+
+    public void AddLogMessage(string message)
+    {
+        damageLogList.Add(message);
         StartCoroutine(DamageLogDisplayCountdown());
         UpdateDamageLogDisplay(); // ABSTRACTION
     }
@@ -64,5 +70,11 @@ public class GameManager : MonoBehaviour
         {
             damageLogDisplay.text = string.Join('\n', damageLogList);
         }
+    }
+
+    public void WinGame()
+    {
+        Debug.Log("Win");
+        SceneManager.LoadScene(winSceneIndex);
     }
 }

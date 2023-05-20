@@ -9,9 +9,15 @@ EditorBuildSettings:
     path: Assets/Scenes/Title Screen.unity
     guid: b51a05c17a837d242871f647ecca6842
   - enabled: 1
-    path: Assets/Scenes/Testing Scene.unity
-    guid: 2cda990e2423bbf4892e6590ba056729
+    path: Assets/Scenes/Main Level.unity
+    guid: fc6ff387349fd3445a1670d2ae6dfb0c
   - enabled: 1
     path: Assets/Scenes/Game Over Screen.unity
     guid: 984d15af37df9ad4a82e4f6d9c3f2186
+  - enabled: 1
+    path: Assets/Scenes/Win Screen.unity
+    guid: a501eace72c864440ac124ee1aa51aaa
+  - enabled: 1
+    path: Assets/Scenes/Testing Scene.unity
+    guid: 2cda990e2423bbf4892e6590ba056729
   m_configObjects: {}
